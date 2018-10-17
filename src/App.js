@@ -6,6 +6,8 @@ import Cover from './components/cover'
 import Footer from './components/footer'
 import BodyNews from './components/bodyNews'
 
+
+
 const history = createBrowserHistory();
 
 class App extends Component {

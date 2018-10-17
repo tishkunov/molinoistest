@@ -12,3 +12,10 @@ export const closeForm = (dispatch) => {
 		
 	}
 }
+
+export const setNewsData = (payload) => {
+	return {
+		type: 'setNewsData',
+		payload
+	}
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { closeForm } from './../actions/news'
 
+
 const categories = ['Спорт', 'Политика', 'Проишествия', 'Наука', 'Бизнес'];
 
 class FormAdd extends Component {
@@ -60,20 +61,30 @@ class FormAdd extends Component {
 		const { title, file , text, category, fileTemp  } = this.state;
 		if (this.state.validation) {
 			let fr = new FileReader();
-			console.log(e.target.result)
+			
 			
 			fr.onload = (e) =>  {
-				  	const item = {
-						title,
-						fileTemp: e.target.result,
-						text,
-						category
-					}
+				  	
 					if (localStorage.getItem('news') === null) {
+						const item = {
+							title,
+							fileTemp: e.target.result,
+							text,
+							category,
+							id:1
+						}
 						const news = [item];
 						localStorage.setItem('news', JSON.stringify(news))
 					} else {
+						
 						let news = JSON.parse(localStorage.getItem('news'));
+						const item = {
+							title,
+							fileTemp: e.target.result,
+							text,
+							category,
+							id: news.length + 1
+						}
 						news = [...news, item]
 						localStorage.setItem('news', JSON.stringify(news))
 					}

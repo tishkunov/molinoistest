@@ -11,8 +11,9 @@ export default function data(state = initialState, action) {
 		case 'addNewsHandler':
 			return {...state, stateOfAdding: 'active'}	
 		case 'closeForm':
-			console.log('aganu')
-			return {...state, stateOfAdding: ''}	
+			return {...state, stateOfAdding: ''}
+		case 'setNewsData': 
+			return {...state, newsList:action.payload}		
 		default:
     		return state;
   }
