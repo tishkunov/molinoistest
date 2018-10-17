@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import createBrowserHistory from "history/createBrowserHistory";
 import './App.css';
 
@@ -29,9 +29,10 @@ class App extends Component {
 
 
   render() {
-    
+      
       return (
         <div className="App">
+
           <Cover date={new Date().toLocaleString('ru', {
                       day: 'numeric',
                       year: 'numeric',
@@ -44,7 +45,8 @@ class App extends Component {
                         minute: 'numeric',
                       }).split(' ').join(' , ')} />
             <BodyNews />          
-            <Footer />          
+            <Footer />       
+
         </div>
       );
   
