@@ -5,7 +5,7 @@ import history from './../history';
 import CardMd from './../components/cardMd'
 import Navigation from './../components/navigation'
 import MainNews from './../components/mainNews'
-import FormAdd from './../components/formAdd'
+import FormAdd from './../containers/formAdd'
 import CardLg from './../components/cardLg'
 
 import { setNewsData, changePage } from './../actions/news'
