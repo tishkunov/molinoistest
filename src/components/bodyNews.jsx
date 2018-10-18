@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
+import history from './../history';
 
 import CardMd from './cardMd'
 import Navigation from './navigation'
 import MainNews from './mainNews'
 import FormAdd from './formAdd'
+import CardLg from './cardLg'
 
-import { setNewsData } from './../actions/news'
+import { setNewsData, changePage } from './../actions/news'
 
 import { Link } from 'react-router-dom'
 
@@ -15,12 +17,21 @@ class BodyNews extends Component {
 	componentDidMount() {
 		if (localStorage.getItem('news') !== null && localStorage.getItem('news') !== undefined) {
 			this.props.setNewsData(JSON.parse(localStorage.getItem('news')))
-			console.log('aga')
+
 		}
 	}
 
+	handleChangePage = (e) => {
+		e.preventDefault();
+		
+		history.push(`?page=${e.target.value}`);
+
+		this.props.changePage(e.target.value)
+	}
+
 	render() {
-		const { stateOfAdding, filter, newsList  } = this.props;
+
+		const { stateOfAdding, filter, newsList, page , countPages } = this.props;
 		console.log(newsList)
 		const formAdding = this.props.stateOfAdding === 'active' ? (<FormAdd />) : null;
 		return (
@@ -29,24 +40,23 @@ class BodyNews extends Component {
 					<Navigation filter={filter}  />
 
 					<div className='bodyNews__wrapperMainNews'>
-						<div className='newsList__cardLg__wrapper'>
-							<p className='newsList__cardLg__wrapper__date'>12 Сентября 2018, Среда, 17:07</p>
-							<div className='newsList__cardLg'>
-								<img src='img/news-photo.jpg' className='newsList__cardLg__bg' alt='Card BG' />
-								<div className='newsList__cardMd__wrapper'>
-									
-									<p className='newsList__cardMd__date'>18:08, 12 сентября 2018</p>
-									<a className='newsList__cardMd__title' href='#'>Виктор Ан обратился к болельщикам </a>
-								</div>		
-								<div className='newsList__cardMd__type'>Sport</div>
-								<a className='newsList__cardMd__link' href='javascript:void(0);'><img src='img/share.svg' alt='share' /></a>
-							</div>	
-						</div>
-						<MainNews />
+						{newsList.filter(item => item.id >= ((page * 3) - 2) && item.id <= page * 3 ).map((item, index) => index === 0 ? (
+							<Fragment key={item.id}>
+								<CardLg props={item} />
+								<MainNews />
+							</Fragment>
+							) : (
+							<CardMd key={item.id} props={item} />
+						))}
+						
 					</div>
 					{formAdding}
-					<a href='?page=2'>PAGE</a>
-					<CardMd />
+					<div className='bodyNews__pagination' onClick={this.handleChangePage} style={{ marginTop: '50px'}} >
+						{countPages.map((item, index) => (<button key={index}  value={item}>{item}</button>))}
+					</div>
+					
+					
+					
 
 				</div>
 			</div>		
@@ -60,7 +70,9 @@ const mapStateToProps = state => {
 	return {
 		filter: state.news.filter,
 		stateOfAdding: state.news.stateOfAdding,
-		newsList: state.news.newsList
+		newsList: state.news.newsList,
+		page: state.news.page,
+		countPages: state.news.countPages
 	}
 }
 
@@ -68,7 +80,9 @@ const mapDispatchProps = dispatch => {
 	return {
 		setNewsData: (payload) => {
 			dispatch(setNewsData(payload))
-			
+		},
+		changePage: (payload) => {
+			dispatch(changePage(payload))
 		}
 	}
 }

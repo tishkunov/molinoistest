@@ -19,3 +19,13 @@ export const setNewsData = (payload) => {
 		payload
 	}
 }
+
+export const changePage = (payload) => {
+	return {
+		type: 'changePage',
+		payload
+	}
+}
+
+
+

@@ -1,9 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { closeForm } from './../actions/news'
+import { closeForm, setNewsData } from './../actions/news'
 
 
-const categories = ['Спорт', 'Политика', 'Проишествия', 'Наука', 'Бизнес'];
+
+const categories = [
+	{
+		nameRus: 'Спорт',
+		nameEng: 'sport'
+	},
+	{
+		nameRus: 'Политика',
+		nameEng: 'politic'
+	}, 
+	{
+		nameRus: 'Проишествия',
+		nameEng: 'incident'
+	},
+	{
+		nameRus: 'Наука',
+		nameEng: 'science'
+	}, 
+	{
+		nameRus: 'Бизнес',
+		nameEng: 'business'
+	} ];
 
 class FormAdd extends Component {
 	constructor(props) {
@@ -24,7 +45,7 @@ class FormAdd extends Component {
 		if (e.target.classList.contains('formAddNews__select') || e.target.classList.contains('formAddNews__select-active')) {
 			this.setState({selectView: true, category: ''})	
 		} else {
-			this.setState({selectView: false, category: e.target.getAttribute('value')}, () => this.validation())
+			this.setState({selectView: false, category: e.target.getAttribute('value'), nameEng: e.target.getAttribute('nameEng')}, () => this.validation())
 		}
 	}
 
@@ -58,20 +79,33 @@ class FormAdd extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		const { title, file , text, category, fileTemp  } = this.state;
+		const { title, file , text, category, fileTemp , nameEng } = this.state;
 		if (this.state.validation) {
 			let fr = new FileReader();
 			
 			
 			fr.onload = (e) =>  {
-				  	
+				  	const date = new Date().toLocaleString('ru', {
+		                      day: 'numeric',
+		                      year: 'numeric',
+		                      month: 'long',
+		                      }).slice(0, -2) 
+		                      + ', ' +
+		                      new Date().toLocaleString('ru', {
+		                        weekday: 'long',
+		                        hour: 'numeric',
+		                        minute: 'numeric',
+		                      }).split(' ').join(' , ');
 					if (localStorage.getItem('news') === null) {
+						
 						const item = {
 							title,
 							fileTemp: e.target.result,
 							text,
 							category,
-							id:1
+							id:1,
+							date,
+							nameEng
 						}
 						const news = [item];
 						localStorage.setItem('news', JSON.stringify(news))
@@ -83,12 +117,15 @@ class FormAdd extends Component {
 							fileTemp: e.target.result,
 							text,
 							category,
-							id: news.length + 1
+							id: news.length + 1,
+							date,
+							nameEng
 						}
 						news = [...news, item]
 						localStorage.setItem('news', JSON.stringify(news))
 					}
 					this.props.closeForm();
+					this.props.setNewsData(JSON.parse(localStorage.getItem('news')));
 				   
 			}
 			fr.readAsDataURL(file);
@@ -99,7 +136,7 @@ class FormAdd extends Component {
 
 	render() {
 		const { selectView, category, title, text, fileValue, validation, file } = this.state;
-		const selectItems = selectView ?  categories.map((item, index) => (<div  key={index} className='formAddNews__select__item' value={item} >{item} </div>)) : null;
+		const selectItems = selectView ?  categories.map((item, index) => (<div  key={index} className='formAddNews__select__item' nameEng={item.nameEng} value={item.nameRus} >{item.nameRus} </div>)) : null;
 		return (
 			<div className='blur-bg'>
 				<form className='formAddNews' onSubmit={this.handleSubmit}>
@@ -128,6 +165,9 @@ const mapDispatchProps = dispatch => {
 	return {
 		closeForm: () => {
 			dispatch(closeForm())
+		},
+		setNewsData: (payload) => {
+			dispatch(setNewsData(payload))
 		}
 	}
 }

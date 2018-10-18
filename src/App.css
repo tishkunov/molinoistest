@@ -214,6 +214,9 @@ body {
   height: 280px;
   max-width: 445px;
   position: relative;
+  margin-top: 35px;        
+  box-sizing: border-box;
+  min-width: calc(50% - 18px);  
 }
 
 .newsList__cardLg {
@@ -233,6 +236,7 @@ body {
   justify-content: space-between;
   border-top:3px solid #000;
   margin-right: 20px;
+      min-width: calc(60% - 20px);
 }
 
 .newsList__cardLg__wrapper__date {
@@ -245,7 +249,7 @@ body {
 }
 
 .newsList__cardMd__bg {
-  object-fit: contain;
+  width:100%;
 }
 
 
@@ -344,11 +348,14 @@ body {
   min-height: 360px;
   margin-left: 35px;
   justify-content: space-between;
+  min-width: calc(40% - 35px);
 }
 
 .bodyNews__wrapperMainNews {
   display: flex;
+  flex-flow: wrap row;
   width: 100%;
+  justify-content: space-between;
 }
 
 .mainNews__heading {

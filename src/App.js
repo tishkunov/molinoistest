@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import createBrowserHistory from "history/createBrowserHistory";
+
 import './App.css';
 
 import Cover from './components/cover'
@@ -8,7 +8,9 @@ import BodyNews from './components/bodyNews'
 
 
 
-const history = createBrowserHistory();
+
+
+
 
 class App extends Component {
   constructor() {
@@ -55,5 +57,7 @@ class App extends Component {
     
   }
 }
+
+
 
 export default App;
