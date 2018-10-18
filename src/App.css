@@ -106,9 +106,7 @@ body {
   transition: all 1s;
 }
 
-.app__cover__addNewsButton:hover:after {
-  transform: rotate(360deg) translate(0, 0%)
-}
+
 
 
 /*First Screen END */
@@ -236,7 +234,8 @@ body {
   justify-content: space-between;
   border-top:3px solid #000;
   margin-right: 20px;
-      min-width: calc(60% - 20px);
+  min-width: calc(60% - 20px);
+  max-width: calc(60% - 20px);    
 }
 
 .newsList__cardLg__wrapper__date {
@@ -366,9 +365,10 @@ body {
   flex:3;
   border-top:solid 3px #000;
   min-height: 360px;
-  margin-left: 35px;
+  
   justify-content: space-between;
   min-width: calc(40% - 35px);
+  max-width: calc(40% - 35px);
 }
 
 .bodyNews__wrapperMainNews {
@@ -444,6 +444,19 @@ body {
 
 /*FORM ADD NEWS START */
 
+@keyframes animationOnDisplay {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity:  1;
+  }
+}
+
+  
 
 .formAddNews {
   width: 400px;
@@ -457,7 +470,9 @@ body {
   box-sizing: border-box;
   height: auto;
   min-height: 520px;
+  animation: .5s ease-out 0s 1 animationOnDisplay;
 }
+
 
 .formAddNews__closeButton {
   width: 24px;
@@ -605,4 +620,11 @@ body {
   cursor: pointer;
   outline: none;
   float: right;
+}
+
+
+@media screen and (max-width: 970px) {
+  .newsList__cardLg__wrapper, .mainNews, .newsList__cardMd  {
+    min-width: 100%;
+  }
 }
