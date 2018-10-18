@@ -666,7 +666,32 @@ body {
 }
 
 @media screen and (max-width: 970px) {
-  .newsList__cardLg__wrapper, .mainNews, .newsList__cardMd  {
+  .newsList__cardLg__wrapper, .mainNews, .newsList__cardMd, .footer__line__nav , .footer__line__copyright  {
     min-width: 100%;
   }
+
+  .formAddNews {
+    width: 90%;
+    margin-left: 5%;
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  .footer__line, .footer__line__nav {
+    flex-flow: wrap row;
+  }
+
+  .footer__line__nav__listItem {
+    padding: 10px;
+  } 
+
+  .app__cover {
+    height: auto;
+    padding-top: 250px;
+    padding-bottom: 150px;
+  }
+
+  
 }
