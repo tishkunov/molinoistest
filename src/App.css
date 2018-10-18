@@ -285,7 +285,7 @@ body {
   height: 24px;
   object-fit: contain;
   border-radius: 2px;
-  background-color: #ff5050;
+  
   font-family: HelveticaNeue;
   font-size: 11px;
   font-weight: 500;
@@ -294,6 +294,26 @@ body {
   top:20px;
   left:20px;
   line-height: 24px;
+}
+
+.newsList__cardMd__type-sport {
+  background-color: #ff5050;
+}
+
+.newsList__cardMd__type-business {
+  background-color:#cecece;
+}
+
+.newsList__cardMd__type-politic {
+   background-color: #f9621e;
+}
+
+.newsList__cardMd__type-science {
+  background-color:#6ba3ff;
+}
+
+.newsList__cardMd__type-incident {
+   background-color:#efe24c;
 }
 
 .newsList__cardMd__date {

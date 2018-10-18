@@ -32,7 +32,7 @@ class BodyNews extends Component {
 	render() {
 
 		const { stateOfAdding, filter, newsList, page , countPages } = this.props;
-		console.log(newsList)
+		console.log(countPages)
 		const formAdding = this.props.stateOfAdding === 'active' ? (<FormAdd />) : null;
 		return (
 			<div className='bodyNews'>

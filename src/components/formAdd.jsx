@@ -37,7 +37,8 @@ class FormAdd extends Component {
 			file:null,
 			fileValue: 'Upload file',
 			validation: false,
-			fileTemp: ''
+			fileTemp: '',
+			nameEng:''
 		}
 	}
 
@@ -45,7 +46,7 @@ class FormAdd extends Component {
 		if (e.target.classList.contains('formAddNews__select') || e.target.classList.contains('formAddNews__select-active')) {
 			this.setState({selectView: true, category: ''})	
 		} else {
-			this.setState({selectView: false, category: e.target.getAttribute('value'), nameEng: e.target.getAttribute('nameEng')}, () => this.validation())
+			this.setState({selectView: false, category: e.target.getAttribute('value'), nameEng: e.target.getAttribute('nameeng')}, () => this.validation())
 		}
 	}
 
@@ -60,6 +61,7 @@ class FormAdd extends Component {
 		}  else {
 			this.setState({validation: false} )
 		}
+		console.log(this.state.nameEng)
 	}
 
 	handleClickInputFile = (e) => {
@@ -136,7 +138,7 @@ class FormAdd extends Component {
 
 	render() {
 		const { selectView, category, title, text, fileValue, validation, file } = this.state;
-		const selectItems = selectView ?  categories.map((item, index) => (<div  key={index} className='formAddNews__select__item' nameEng={item.nameEng} value={item.nameRus} >{item.nameRus} </div>)) : null;
+		const selectItems = selectView ?  categories.map((item, index) => (<div  key={index} className='formAddNews__select__item' nameeng={item.nameEng} value={item.nameRus} >{item.nameRus} </div>)) : null;
 		return (
 			<div className='blur-bg'>
 				<form className='formAddNews' onSubmit={this.handleSubmit}>

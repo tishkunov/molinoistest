@@ -18,7 +18,8 @@ export default function data(state = initialState, action) {
 			return {...state, stateOfAdding: ''}
 
 		case 'setNewsData': 
-			return {...state, newsList:action.payload, countPages: action.payload.length > 3 ?  Array.from({ length: Math.round(action.payload.length / 3) }, (v, k) => k + 1) : [] }	
+
+			return {...state, newsList:action.payload, countPages: action.payload.length > 3 ?  Array.from({ length: Math.ceil(action.payload.length / 3) }, (v, k) => k + 1) : [] }	
 
 		case 'changePage': 	
 			return {...state, page: action.payload}

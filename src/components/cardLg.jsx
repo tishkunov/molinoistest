@@ -10,7 +10,7 @@ function CardLg({props}) {
 				<p className='newsList__cardMd__date'>{props.date}</p>
 				<a className='newsList__cardMd__title' href='#'>{props.title} </a>
 			</div>		
-			<div className='newsList__cardMd__type'>{props.category}</div>
+			<div className={`newsList__cardMd__type newsList__cardMd__type-${props.nameEng}`}>{props.category}</div>
 				<a className='newsList__cardMd__link' href='javascript:void(0);'><img src='img/share.svg' alt='share' /></a>
 			</div>	
 		</div>
