@@ -31,7 +31,7 @@ function Navigation({filter}) {
 			<div className='navigation'>
 				{navItems.map((item, index) => (
 					<li key={index} className='navigation__listItem'  >
-						<a href='#' className={item.key === filter? 'navigation__listItem__link navigation__listItem__link-active' : 'navigation__listItem__link'}>{item.name}</a>
+						<a href='https://google.ru' className={item.key === filter? 'navigation__listItem__link navigation__listItem__link-active' : 'navigation__listItem__link'}>{item.name}</a>
 					</li>
 				))}
 			</div>		

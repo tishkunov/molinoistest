@@ -23,12 +23,17 @@
 }
 
 @font-face {
-  src :url('/font/Roboto.ttf');
-  font-family: 'Roboto';
+  src :url('/font/HelveticaNeueCyr-Bold.otf');
+  font-family: 'HelveticaNeue-bold';
+}
+
+@font-face {
+  src :url('/font/HelveticaNeueCyr-Medium.otf');
+  font-family: 'HelveticaNeue';
 }
 
 body {
-  font-family: 'Roboto';
+  font-family: 'HelveticaNeue';
 }
 
 @keyframes App-logo-spin {
@@ -55,15 +60,18 @@ body {
   background-image: url('/img/bitmap.jpg');
   background-size: 100% 100%;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  padding-top: 350px;
+  box-sizing: border-box;
+  padding-bottom: 160px;
 }
 
 .app__cover__headline {
   color:#fff;
   text-transform: uppercase;
   font-size: 36px;
-  font-family: HelveticaNeue;
+  font-family: 'HelveticaNeue-bold';
   font-weight: bold;
 }
 
@@ -73,14 +81,14 @@ body {
   font-size: 11px;
   font-weight: 500;
   opacity: 0.81;
-  font-family: HelveticaNeue;
+  font-family: 'HelveticaNeue';
 }
 
 .app__cover__addNewsButton {
   width: 190px;
   border:none;
   border-bottom: 1px solid #fff;
-  font-family: HelveticaNeue;
+  font-family: 'HelveticaNeue';
   font-size: 11px;
   font-weight: 500;
   color: #ffffff;  
@@ -91,6 +99,7 @@ body {
   position: relative;
   height: 35px;
   cursor: pointer;
+ 
 }
 
 .app__cover__addNewsButton:after {
@@ -133,7 +142,7 @@ body {
   background-color: transparent;
   outline: none;
   color:#fff;
-  font-family: HelveticaNeue;
+  font-family: 'HelveticaNeue';
   font-size: 16px;
   font-weight: 500;
   display: flex;
@@ -159,7 +168,7 @@ body {
 
 .footer__line__nav__listItem__link {
   color:#fff;
-  font-family: HelveticaNeue;
+  font-family: 'HelveticaNeue';
   font-size: 11px;
   font-weight: 500;
 }
@@ -173,7 +182,7 @@ body {
   display: flex;
   flex: 1;
   justify-content: flex-end;
-  font-family: HelveticaNeue;
+  font-family: 'HelveticaNeue';
   font-size: 11px;
   font-weight: 500;
   font-style: normal;
@@ -225,6 +234,10 @@ body {
   position: relative;
 }
 
+.newsList__cardLg__bg {
+  width: 100%;
+}
+
 .newsList__cardLg__wrapper {
   flex:5;
   display: flex;
@@ -239,12 +252,12 @@ body {
 }
 
 .newsList__cardLg__wrapper__date {
-  font-family: HelveticaNeue;
   font-size: 20px;
   font-weight: bold;
   color:#000;
   text-align: left;
   margin-top: 15px;
+  font-family: 'HelveticaNeue-bold';
 }
 
 .newsList__cardMd__bg {
@@ -267,7 +280,7 @@ body {
 
 .newsList__cardMd__title {
   
-  font-family: HelveticaNeue;
+  font-family: 'HelveticaNeue';
   font-size: 16px;
   font-weight: 500;
   color:#fff;
@@ -285,7 +298,7 @@ body {
   object-fit: contain;
   border-radius: 2px;
   
-  font-family: HelveticaNeue;
+  font-family: 'HelveticaNeue';
   font-size: 11px;
   font-weight: 500;
   color:#fff;
@@ -318,7 +331,7 @@ body {
 .newsList__cardMd__date {
   margin-bottom: 10px;
   color:#fff;
-  font-family: HelveticaNeue;
+  font-family: 'HelveticaNeue';
   font-size: 11px;
   font-weight: 300;
 }
@@ -344,7 +357,7 @@ body {
 
 .navigation__listItem__link {
   color: #d8d8d8;
-  font-family: HelveticaNeue;
+  font-family: 'HelveticaNeue';
   font-size: 11px;
   font-weight: 500;
 }
@@ -379,7 +392,7 @@ body {
 }
 
 .mainNews__heading {
-   font-family: HelveticaNeue;
+  font-family: 'HelveticaNeue-bold';
   font-size: 20px;
   color:#000;
   text-align: left;
@@ -407,7 +420,7 @@ body {
 }
 
 .mainNews__item__title {
-  font-family: HelveticaNeue;
+  font-family: 'HelveticaNeue';
   font-size: 16px;
   font-weight: 500;
   color:#434343;
@@ -421,7 +434,7 @@ body {
 
 .mainNews__item__info__text {
   color: #d8d8d8;
-  font-family: HelveticaNeue;
+  font-family: 'HelveticaNeue';
   font-size: 11px;
   margin:0;
   margin-left:3px;
@@ -494,13 +507,14 @@ body {
   height: 100vh;
   position: fixed;
   background-size: 100% 100%;
-  
+  background-image: url(/img/bitmap-blur.jpg);
   top:0;
   left:0;
+
 }
 
 .formAddNews__title {
-  font-family: HelveticaNeue;
+  font-family: 'HelveticaNeue';
   font-size: 36px;
   color:#000;
   margin-top: 50px;
@@ -516,7 +530,7 @@ body {
   margin-top:10px;
   margin-bottom: 10px;
   text-indent: 20px;
-   font-family: HelveticaNeue;
+   font-family: 'HelveticaNeue';
   font-size: 11px;
   font-weight: 500;
   text-align: left;
@@ -535,7 +549,7 @@ body {
   height: auto;
   min-height: 50px;
   line-height: 50px;
-   font-family: HelveticaNeue;
+   font-family: 'HelveticaNeue';
   font-size: 11px;
   font-weight: 500;
   text-align: left;
@@ -548,7 +562,7 @@ body {
   line-height: 50px;
   border-radius: 2px;
     border: solid 1px #d8d8d8;
-     font-family: HelveticaNeue;
+     font-family: 'HelveticaNeue';
   font-size: 11px;
   font-weight: 500;
   text-align: left;
@@ -563,7 +577,7 @@ body {
   min-height: 50px;
   line-height: 50px;
   border:1px solid #000;
-   font-family: HelveticaNeue;
+   font-family: 'HelveticaNeue';
   font-size: 11px;
   font-weight: 500;
   text-align: left;
@@ -578,7 +592,7 @@ body {
   margin-bottom: 10px;
   text-indent: 20px;
   border:1px solid #000;
-   font-family: HelveticaNeue;
+   font-family: 'HelveticaNeue';
   font-size: 11px;
   font-weight: 500;
   line-height: 50px;
@@ -622,6 +636,34 @@ body {
   float: right;
 }
 
+.bodyNews__pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.bodyNews__pagination__text {
+  font-family: 'HelveticaNeue';
+  font-size: 16px;
+  font-weight: 500;
+  color:#000;
+}
+
+.bodyNews__pagination__wrapper {
+
+}
+
+.bodyNews__pagination__wrapper__pagButton {
+  font-family: 'HelveticaNeue-bold';
+  font-size: 16px;
+  font-weight: bold;
+  color:#000;
+  background-color: transparent;
+  border:none;
+  cursor: pointer;
+  margin-left: 36px;
+  outline: none;
+}
 
 @media screen and (max-width: 970px) {
   .newsList__cardLg__wrapper, .mainNews, .newsList__cardMd  {

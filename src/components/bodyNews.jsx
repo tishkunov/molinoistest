@@ -10,7 +10,6 @@ import CardLg from './cardLg'
 
 import { setNewsData, changePage } from './../actions/news'
 
-import { Link } from 'react-router-dom'
 
 class BodyNews extends Component {
 
@@ -30,10 +29,11 @@ class BodyNews extends Component {
 	}
 
 	render() {
-
+		
 		const { stateOfAdding, filter, newsList, page , countPages } = this.props;
+		
 		console.log(countPages)
-		const formAdding = this.props.stateOfAdding === 'active' ? (<FormAdd />) : null;
+		const formAdding = stateOfAdding === 'active' ? (<FormAdd />) : null;
 		return (
 			<div className='bodyNews'>
 				<div className='container'>
@@ -51,8 +51,12 @@ class BodyNews extends Component {
 						
 					</div>
 					{formAdding}
-					<div className='bodyNews__pagination' onClick={this.handleChangePage} style={{ marginTop: '50px'}} >
-						{countPages.map((item, index) => (<button key={index}  value={item}>{item}</button>))}
+					<div className='bodyNews__pagination'  style={{ marginTop: '50px'}} >
+						<p className='bodyNews__pagination__text'>Больше новостей</p>
+						<div className='bodyNews__pagination__wrapper' onClick={this.handleChangePage}>
+							{countPages.map((item, index) => (<button className='bodyNews__pagination__wrapper__pagButton' key={index}  value={item}>{item}</button>))}
+						</div>
+						
 					</div>
 					
 					

@@ -61,7 +61,6 @@ class FormAdd extends Component {
 		}  else {
 			this.setState({validation: false} )
 		}
-		console.log(this.state.nameEng)
 	}
 
 	handleClickInputFile = (e) => {
@@ -81,10 +80,9 @@ class FormAdd extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		const { title, file , text, category, fileTemp , nameEng } = this.state;
+		const { title, file , text, category, nameEng } = this.state;
 		if (this.state.validation) {
 			let fr = new FileReader();
-			
 			
 			fr.onload = (e) =>  {
 				  	const date = new Date().toLocaleString('ru', {
@@ -130,9 +128,7 @@ class FormAdd extends Component {
 					this.props.setNewsData(JSON.parse(localStorage.getItem('news')));
 				   
 			}
-			fr.readAsDataURL(file);
-			
-			
+			fr.readAsDataURL(file);	
 		}
 	}
 
@@ -151,7 +147,7 @@ class FormAdd extends Component {
 					<input type='file' name='file' className='formAddNews__inputFile' onChange={this.handleChangeInputFile} />
 					<div className={fileValue === 'Upload file' ||  fileValue === ' ' ?  'formAddNews__input' : 'formAddNews__input-active'} onClick={this.handleClickInputFile} >
 						{fileValue} 
-						{file !== null ? (<button className='formAddNews__removeFile' onClick={this.handleRemoveFile}><img src='img/icon-close-button.svg' width='11' height='11' /></button>) : null}
+						{file !== null ? (<button className='formAddNews__removeFile' onClick={this.handleRemoveFile}><img src='img/icon-close-button.svg' alt='Close button' width='11' height='11' /></button>) : null}
 						
 					</div> 
 					<button type='submit' className={!validation ? 'formAddNews__buttonSubmit-disabled' : 'formAddNews__buttonSubmit-active' }>ОТПРАВИТЬ</button>
