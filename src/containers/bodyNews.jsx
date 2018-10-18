@@ -2,11 +2,11 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
 import history from './../history';
 
-import CardMd from './cardMd'
-import Navigation from './navigation'
-import MainNews from './mainNews'
-import FormAdd from './formAdd'
-import CardLg from './cardLg'
+import CardMd from './../components/cardMd'
+import Navigation from './../components/navigation'
+import MainNews from './../components/mainNews'
+import FormAdd from './../components/formAdd'
+import CardLg from './../components/cardLg'
 
 import { setNewsData, changePage } from './../actions/news'
 
