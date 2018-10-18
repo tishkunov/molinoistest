@@ -4,13 +4,7 @@ import './App.css';
 
 import Cover from './components/cover'
 import Footer from './components/footer'
-import BodyNews from './components/bodyNews'
-
-
-
-
-
-
+import BodyNews from './containers/bodyNews'
 
 class App extends Component {
   constructor() {
