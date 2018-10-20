@@ -1,28 +1,25 @@
+export const ADD_NEWS = 'ADD_NEWS'
+export const SET_NEWS_DATA = 'SET_NEWS_DATA'
+export const CHANGE_PAGE = 'CHANGE_PAGE'
+
+
 export const addNewsHandler = (dispatch) => {
 	return {
-		type: 'addNewsHandler',
-		
-	}
-	dispatch('addNewsHandler')
-}
-
-export const closeForm = (dispatch) => {
-	return {
-		type: 'closeForm',
+		type: ADD_NEWS,
 		
 	}
 }
 
 export const setNewsData = (payload) => {
 	return {
-		type: 'setNewsData',
+		type: SET_NEWS_DATA,
 		payload
 	}
 }
 
 export const changePage = (payload) => {
 	return {
-		type: 'changePage',
+		type: CHANGE_PAGE,
 		payload
 	}
 }

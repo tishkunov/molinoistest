@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { closeForm, setNewsData } from './../actions/news'
+import { SET_NEWS_DATA } from './../actions/news'
 
 
 
@@ -64,7 +64,6 @@ class FormAdd extends Component {
 	}
 
 	handleClickInputFile = (e) => {
-		
 		e.target.previousElementSibling.click();
 	}
 
@@ -82,51 +81,39 @@ class FormAdd extends Component {
 		e.preventDefault();
 		const { title, file , text, category, nameEng } = this.state;
 		if (this.state.validation) {
-			let fr = new FileReader();
-			
+			let fr = new FileReader();	
 			fr.onload = (e) =>  {
-				  	const date = new Date().toLocaleString('ru', {
-		                      day: 'numeric',
-		                      year: 'numeric',
-		                      month: 'long',
-		                      }).slice(0, -2) 
-		                      + ', ' +
-		                      new Date().toLocaleString('ru', {
-		                        weekday: 'long',
-		                        hour: 'numeric',
-		                        minute: 'numeric',
-		                      }).split(' ').join(' , ');
-					if (localStorage.getItem('news') === null) {
-						
-						const item = {
-							title,
-							fileTemp: e.target.result,
-							text,
-							category,
-							id:1,
-							date,
-							nameEng
-						}
-						const news = [item];
-						localStorage.setItem('news', JSON.stringify(news))
-					} else {
-						
-						let news = JSON.parse(localStorage.getItem('news'));
-						const item = {
-							title,
-							fileTemp: e.target.result,
-							text,
-							category,
-							id: news.length + 1,
-							date,
-							nameEng
-						}
-						news = [...news, item]
-						localStorage.setItem('news', JSON.stringify(news))
-					}
-					this.props.closeForm();
-					this.props.setNewsData(JSON.parse(localStorage.getItem('news')));
-				   
+				const date = new Date().toLocaleString('ru', {
+			            day: 'numeric',
+			            year: 'numeric',
+			            month: 'long',
+		            }).slice(0, -2) 
+		            + ', ' +
+		            new Date().toLocaleString('ru', {
+			            weekday: 'long',
+			            hour: 'numeric',
+			            minute: 'numeric',
+		            }).split(' ').join(' , ');
+		        let news = JSON.parse(localStorage.getItem('news'));
+		        const id = localStorage.getItem('news') === null ? 1 : news.length + 1;
+		        const item = {
+					title,
+					fileTemp: e.target.result,
+					text,
+					category,
+					id,
+					date,
+					nameEng
+				}   
+
+				if (localStorage.getItem('news') === null) {	
+					const news = [item];
+					localStorage.setItem('news', JSON.stringify(news))
+				} else {
+					news = [...news, item]
+					localStorage.setItem('news', JSON.stringify(news))
+				}
+				this.props.SET_NEWS_DATA(JSON.parse(localStorage.getItem('news')));			   
 			}
 			fr.readAsDataURL(file);	
 		}
@@ -161,11 +148,8 @@ class FormAdd extends Component {
 
 const mapDispatchProps = dispatch => {
 	return {
-		closeForm: () => {
-			dispatch(closeForm())
-		},
-		setNewsData: (payload) => {
-			dispatch(setNewsData(payload))
+		SET_NEWS_DATA: (payload) => {
+			dispatch(SET_NEWS_DATA(payload))
 		}
 	}
 }
