@@ -1,14 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { ADD_NEWS } from './../actions/news'
+import { addNews } from './../actions/news'
 
-function AddNewsButton({ADD_NEWS}) {
+console.log(addNews)
+
+function AddNewsButton({addNews}) {
 	
 		return (
-			<button className='app__cover__addNewsButton' onClick={ADD_NEWS}>
+			<button className='app__cover__addNewsButton' onClick={addNews}>
 				ДОБАВИТЬ НОВОСТЬ
 			</button>		
 		) 								
 }
 
-export default connect(null, {ADD_NEWS})(AddNewsButton);
+export default connect(null, {addNews})(AddNewsButton);

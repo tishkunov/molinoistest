@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { SET_NEWS_DATA } from './../actions/news'
+import { setNewsData, closeForm } from './../actions/news'
 
 
 
@@ -113,7 +113,8 @@ class FormAdd extends Component {
 					news = [...news, item]
 					localStorage.setItem('news', JSON.stringify(news))
 				}
-				this.props.SET_NEWS_DATA(JSON.parse(localStorage.getItem('news')));			   
+				this.props.setNewsData(JSON.parse(localStorage.getItem('news')));	
+				this.props.closeForm();		   
 			}
 			fr.readAsDataURL(file);	
 		}
@@ -148,8 +149,11 @@ class FormAdd extends Component {
 
 const mapDispatchProps = dispatch => {
 	return {
-		SET_NEWS_DATA: (payload) => {
-			dispatch(SET_NEWS_DATA(payload))
+		closeForm: () => {
+			dispatch(closeForm())
+		},
+		setNewsData: payload => {
+			dispatch(setNewsData(payload))
 		}
 	}
 }

@@ -32,14 +32,13 @@ class BodyNews extends Component {
 		
 		const { stateOfAdding, filter, newsList, page , countPages } = this.props;
 
-		const formAdding = stateOfAdding === 'active' ? (<FormAdd />) : null;
 		return (
 			<div className='bodyNews'>
 				<div className='container'>
 					<Navigation filter={filter}  />
 
 					<div className='bodyNews__wrapperMainNews'>
-						{newsList.filter(item => item.id >= ((page * 3) - 2) && item.id <= page * 3 ).map((item, index) => index === 0 ? (
+						{newsList.filter(item => filter === 'all' ? item : item.nameEng === filter ).filter(item => item.id >= ((page * 3) - 2) && item.id <= page * 3 ).map((item, index) => index === 0 ? (
 							<Fragment key={item.id}>
 								<CardLg props={item} />
 								<MainNews />
@@ -49,8 +48,8 @@ class BodyNews extends Component {
 						))}
 						
 					</div>
-					{formAdding}
-					<div className='bodyNews__pagination'  style={{ marginTop: '50px'}} >
+					{stateOfAdding === 'active' ? (<FormAdd />) : null}
+					<div className='bodyNews__pagination'  >
 						<p className='bodyNews__pagination__text'>Больше новостей</p>
 						<div className='bodyNews__pagination__wrapper' onClick={this.handleChangePage}>
 							{countPages.map((item, index) => (<button className='bodyNews__pagination__wrapper__pagButton' key={index}  value={item}>{item}</button>))}

@@ -1,12 +1,19 @@
+
 export const ADD_NEWS = 'ADD_NEWS'
 export const SET_NEWS_DATA = 'SET_NEWS_DATA'
 export const CHANGE_PAGE = 'CHANGE_PAGE'
+export const CLOSE_FORM = 'CLOSE_FORM'
+export const CHANGE_FILTER = 'CHANGE_FILTER'
 
-
-export const addNewsHandler = (dispatch) => {
+export const closeForm = (dispatch) => {
 	return {
-		type: ADD_NEWS,
-		
+		type: CLOSE_FORM,	
+	}
+}
+
+export const addNews = (dispatch) => {
+	return {
+		type: ADD_NEWS,	
 	}
 }
 
@@ -24,5 +31,10 @@ export const changePage = (payload) => {
 	}
 }
 
-
+export const changeFilter = (payload) => {
+	return {
+		type: CHANGE_FILTER,
+		payload
+	}
+}
 
